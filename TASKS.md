@@ -60,8 +60,8 @@ This file contains the active list of tasks and features for our project. If you
 #### 2.2 Extract text from uploaded resumes
 * **Description**: Integrate text extraction libraries (like pdfplumber/PyPDF2, python-docx) to parse raw text from PDF, DOCX, and TXT files.
 * **Role 1 (Feature Adder)**: ekansh116
-* **Role 2 (Bug Fixer / Verifier)**: *[Enter name/handle]*
-* **Status**: `[Role 2 verification pending]`
+* **Role 2 (Bug Fixer / Verifier)**: Anshulpj12
+* **Status**: `[Verified / Closed]`
 
 #### 2.3 Clean and normalize resume content
 * **Description**: Build text cleaning utilities to remove garbage characters, normalize whitespaces, and prepare text for LLM parsing.
