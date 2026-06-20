@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Create a job posting — Lattice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="job-wizard.css">
+</head>
+<body>
+
+<header class="lattice-nav">
+  <div class="brand"><span class="mark"></span> Lattice <span class="badge badge-ink nav-mode">Employer</span></div>
+  <nav>
+    <a href="#">Dashboard</a>
+    <a href="#" class="active">Job postings</a>
+    <a href="#">Candidates</a>
+    <a href="#">Hiring insights</a>
+  </nav>
+  <div class="nav-right"><div class="avatar">RS</div></div>
+</header>
+
+<div class="wiz-head">
+  <span class="eyebrow">New job posting</span>
+  <h1>Tell Lattice what you're hiring for</h1>
+  <p class="wiz-head-sub">Every field here feeds the matching engine — the more specific you are, the sharper the candidate ranking will be.</p>
+</div>
+
+<main class="wiz-shell" id="wizardRoot">
+
+  <!-- ============ STEPPER + FORM ============ -->
+  <section class="wiz-form-col">
+
+    <ol class="wiz-stepper" id="stepper">
+      <li class="wiz-step-dot active" data-step="1"><span class="dot-num">01</span><span class="dot-label">Basics</span></li>
+      <li class="wiz-step-dot" data-step="2"><span class="dot-num">02</span><span class="dot-label">Requirements</span></li>
+      <li class="wiz-step-dot" data-step="3"><span class="dot-num">03</span><span class="dot-label">Responsibilities</span></li>
+      <li class="wiz-step-dot" data-step="4"><span class="dot-num">04</span><span class="dot-label">Weighting</span></li>
+      <li class="wiz-step-dot" data-step="5"><span class="dot-num">05</span><span class="dot-label">Review</span></li>
+    </ol>
+
+    <form class="wiz-form card" id="wizardForm">
+
+      <!-- STEP 1 — BASICS -->
+      <div class="wiz-panel" data-panel="1">
+        <h3>Basics</h3>
+        <p class="wiz-panel-sub">The essentials candidates see first.</p>
+
+        <label class="wiz-field">
+          <span>Job title <span class="req">*</span></span>
+          <input type="text" id="f-title" placeholder="e.g. Senior Backend Engineer" required>
+        </label>
+
+        <div class="wiz-row">
+          <label class="wiz-field">
+            <span>Department</span>
+            <select id="f-department">
+              <option>Engineering</option><option>Product</option><option>Design</option>
+              <option>Data & AI</option><option>Sales</option><option>Operations</option>
+            </select>
+          </label>
+          <label class="wiz-field">
+            <span>Employment type</span>
+            <select id="f-type">
+              <option>Full-time</option><option>Part-time</option><option>Contract</option><option>Internship</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="wiz-row">
+          <label class="wiz-field">
+            <span>Location</span>
+            <input type="text" id="f-location" placeholder="e.g. Pune, IN (Hybrid)">
+          </label>
+          <label class="wiz-field">
+            <span>Experience level</span>
+            <select id="f-explevel">
+              <option>0–2 yrs (Junior)</option><option>2–5 yrs (Mid)</option>
+              <option selected>5–8 yrs (Senior)</option><option>8+ yrs (Staff / Lead)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="wiz-row">
+          <label class="wiz-field">
+            <span>Salary — min (₹L/yr)</span>
+            <input type="number" id="f-salmin" placeholder="28">
+          </label>
+          <label class="wiz-field">
+            <span>Salary — max (₹L/yr)</span>
+            <input type="number" id="f-salmax" placeholder="38">
+          </label>
+        </div>
+      </div>
+
+      <!-- STEP 2 — REQUIREMENTS -->
+      <div class="wiz-panel" data-panel="2" hidden>
+        <h3>Requirements</h3>
+        <p class="wiz-panel-sub">Skills are matched directly against each candidate's resume profile.</p>
+
+        <label class="wiz-field">
+          <span>Required skills <span class="req">*</span></span>
+          <div class="chip-input" id="skillChipInput">
+            <div class="chip-input-tags" id="skillTags"></div>
+            <input type="text" id="f-skillEntry" placeholder="Type a skill and press Enter…">
+          </div>
+          <span class="wiz-hint">e.g. Kubernetes, PostgreSQL, Event-driven architecture</span>
+        </label>
+
+        <label class="wiz-field">
+          <span>Preferred certifications (optional)</span>
+          <div class="chip-input" id="certChipInput">
+            <div class="chip-input-tags" id="certTags"></div>
+            <input type="text" id="f-certEntry" placeholder="Type a certification and press Enter…">
+          </div>
+        </label>
+
+        <div class="wiz-row">
+          <label class="wiz-field">
+            <span>Minimum education</span>
+            <select id="f-education">
+              <option>No minimum</option>
+              <option selected>Bachelor's degree or equivalent experience</option>
+              <option>Master's degree</option>
+            </select>
+          </label>
+          <label class="wiz-field">
+            <span>Minimum years of experience</span>
+            <input type="number" id="f-minyears" placeholder="5">
+          </label>
+        </div>
+      </div>
+
+      <!-- STEP 3 — RESPONSIBILITIES -->
+      <div class="wiz-panel" data-panel="3" hidden>
+        <h3>Responsibilities</h3>
+        <p class="wiz-panel-sub">What this person will actually do day to day.</p>
+
+        <div class="wiz-field">
+          <span>Core responsibilities</span>
+          <div class="dyn-list" id="respList"></div>
+          <button type="button" class="btn btn-ghost btn-sm dyn-add" id="respAdd">+ Add responsibility</button>
+        </div>
+
+        <div class="wiz-field">
+          <span>Nice to have (optional)</span>
+          <div class="dyn-list" id="niceList"></div>
+          <button type="button" class="btn btn-ghost btn-sm dyn-add" id="niceAdd">+ Add nice-to-have</button>
+        </div>
+      </div>
+
+      <!-- STEP 4 — WEIGHTING -->
+      <div class="wiz-panel" data-panel="4" hidden>
+        <h3>Section weighting</h3>
+        <p class="wiz-panel-sub">Tell the matching engine which parts of a resume matter most for this role. Adjusting one slider rebalances the rest, so the total always stays at 100%.</p>
+
+        <div class="weight-rows" id="weightRows"></div>
+        <div class="weight-total">Total <span id="weightTotal" class="mono">100%</span></div>
+      </div>
+
+      <!-- STEP 5 — REVIEW -->
+      <div class="wiz-panel" data-panel="5" hidden>
+        <h3>Review & publish</h3>
+        <p class="wiz-panel-sub">This is exactly what candidates and the matching engine will see.</p>
+        <div class="review-block" id="reviewBlock"></div>
+      </div>
+
+      <div class="wiz-nav-buttons">
+        <button type="button" class="btn btn-ghost" id="wizBack">Back</button>
+        <button type="button" class="btn btn-primary" id="wizNext">Continue</button>
+        <button type="button" class="btn btn-teal" id="wizPublish" hidden>Publish job posting</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ============ LIVE PREVIEW ============ -->
+  <aside class="wiz-preview-col">
+    <div class="card wiz-preview-card">
+      <span class="eyebrow">Live preview</span>
+      <div class="prev-head">
+        <div class="prev-logo">RS</div>
+        <div>
+          <h4 id="prevTitle">Untitled role</h4>
+          <span class="prev-meta" id="prevMeta">Add details to see them appear here</span>
+        </div>
+      </div>
+
+      <div class="prev-section">
+        <span class="prev-label">Required skills</span>
+        <div class="chip-row" id="prevSkills"><span class="prev-empty">None added yet</span></div>
+      </div>
+
+      <div class="prev-section">
+        <span class="prev-label">Responsibilities</span>
+        <ul class="prev-list" id="prevResp"><li class="prev-empty">None added yet</li></ul>
+      </div>
+
+      <div class="prev-section" id="prevWeightSection" hidden>
+        <span class="prev-label">How candidates will be scored</span>
+        <div class="prev-weight-row">
+          <div id="weightRing"></div>
+          <div class="weight-legend" id="weightLegend"></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+</main>
+
+<!-- ============ SUCCESS STATE ============ -->
+<div class="success-overlay" id="successOverlay" hidden>
+  <div class="card success-card">
+    <div class="success-mark">✓</div>
+    <h2>Job posting published</h2>
+    <p>Lattice will start scoring incoming resumes against this spec immediately. You can track ranked candidates from the review dashboard.</p>
+    <div class="success-actions">
+      <a class="btn btn-ghost" href="../candidate-review/index.html">Go to candidate review</a>
+      <button class="btn btn-teal" id="postAnother">Post another job</button>
+    </div>
+  </div>
+</div>
+
+<script src="job-wizard.js"></script>
+</body>
+</html>

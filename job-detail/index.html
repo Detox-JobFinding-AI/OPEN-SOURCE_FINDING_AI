@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Senior Backend Engineer · Arborlight Systems — Lattice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="job-detail.css">
+</head>
+<body>
+
+<header class="lattice-nav">
+  <div class="brand"><span class="mark"></span> Lattice</div>
+  <nav>
+    <a href="#" class="active">Find jobs</a>
+    <a href="#">My resume</a>
+    <a href="#">Applications</a>
+    <a href="#">For employers</a>
+  </nav>
+  <div class="nav-right">
+    <button class="icon-btn" id="saveJobTop" title="Save job" aria-label="Save job">☆</button>
+    <div class="avatar">PK</div>
+  </div>
+</header>
+
+<div class="jd-breadcrumb">
+  <a href="#">Jobs</a> <span>/</span> <a href="#">Engineering</a> <span>/</span> <span class="current">Senior Backend Engineer</span>
+</div>
+
+<main class="jd-shell">
+
+  <!-- ============ LEFT: job content ============ -->
+  <section class="jd-main">
+
+    <div class="jd-headcard card">
+      <div class="jd-headcard-top">
+        <div class="jd-logo" aria-hidden="true">AS</div>
+        <div class="jd-head-text">
+          <span class="eyebrow">Engineering · Platform Team</span>
+          <h1>Senior Backend Engineer</h1>
+          <div class="jd-meta-row">
+            <span class="jd-meta">Arborlight Systems</span>
+            <span class="jd-dot">·</span>
+            <span class="jd-meta">Pune, IN (Hybrid)</span>
+            <span class="jd-dot">·</span>
+            <span class="jd-meta">Full-time</span>
+          </div>
+        </div>
+      </div>
+      <div class="jd-headcard-tags">
+        <span class="badge badge-teal">₹28L – ₹38L /yr</span>
+        <span class="badge badge-violet">5–8 yrs experience</span>
+        <span class="badge badge-ink">Posted 3 days ago</span>
+      </div>
+    </div>
+
+    <nav class="jd-tabs" role="tablist">
+      <button class="jd-tab active" data-tab="overview">Overview</button>
+      <button class="jd-tab" data-tab="requirements">Requirements</button>
+      <button class="jd-tab" data-tab="company">Company</button>
+    </nav>
+
+    <div class="jd-panel" data-panel="overview">
+      <section class="jd-block">
+        <h3>About the role</h3>
+        <p>
+          Arborlight's Platform team builds the data and orchestration layer that every product
+          surface at Arborlight depends on — queues, internal APIs, and the service mesh that ties
+          it together. You'll own a slice of that platform end to end: design it, ship it, and carry
+          the pager for it.
+        </p>
+      </section>
+
+      <section class="jd-block">
+        <h3>What you'll do</h3>
+        <ul class="jd-bullets">
+          <li>Design and operate distributed services handling 40M+ requests/day across the order and fulfillment pipeline.</li>
+          <li>Lead the migration of two legacy monoliths to event-driven services without downtime.</li>
+          <li>Set technical direction for the platform's data layer, including schema and indexing strategy.</li>
+          <li>Mentor two mid-level engineers and run design reviews for the wider backend guild.</li>
+          <li>Partner with SRE on capacity planning, on-call rotation, and incident postmortems.</li>
+        </ul>
+      </section>
+
+      <section class="jd-block">
+        <h3>Nice to have</h3>
+        <ul class="jd-bullets">
+          <li>Experience operating Kafka or an equivalent event stream at production scale.</li>
+          <li>Prior exposure to a regulated domain (fintech, healthtech, or logistics).</li>
+          <li>Open-source contributions to backend or infra tooling.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="jd-panel" data-panel="requirements" hidden>
+      <section class="jd-block">
+        <h3>Required skills</h3>
+        <p class="jd-block-sub">Skills below are checked against your uploaded resume.</p>
+        <div class="chip-row" id="skillChipRow"></div>
+      </section>
+      <section class="jd-block">
+        <h3>Qualifications</h3>
+        <ul class="jd-bullets">
+          <li>Bachelor's degree in Computer Science, Engineering, or equivalent practical experience.</li>
+          <li>5+ years building backend systems in production.</li>
+          <li>Demonstrated ownership of a service from design through on-call.</li>
+        </ul>
+      </section>
+      <section class="jd-block">
+        <h3>Certifications (preferred, not required)</h3>
+        <div class="chip-row">
+          <span class="chip mono">AWS Solutions Architect</span>
+          <span class="chip mono">CKA — Kubernetes</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="jd-panel" data-panel="company" hidden>
+      <section class="jd-block">
+        <h3>About Arborlight Systems</h3>
+        <p>
+          Arborlight builds inventory and fulfillment infrastructure for mid-size retailers. Founded
+          in 2017, the platform team is 22 engineers across Pune and remote, split between backend
+          services, data infra, and developer tooling.
+        </p>
+        <div class="company-stats">
+          <div><span class="stat-num">220</span><span class="stat-label">Employees</span></div>
+          <div><span class="stat-num">2017</span><span class="stat-label">Founded</span></div>
+          <div><span class="stat-num">4.3</span><span class="stat-label">Employer rating</span></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="jd-block similar-jobs">
+      <h3>Similar roles you might match</h3>
+      <div class="similar-grid">
+        <a class="similar-card" href="#">
+          <span class="eyebrow">Northstar Cloud</span>
+          <strong>Staff Backend Engineer</strong>
+          <span class="similar-meta">Remote · ₹40L–₹52L</span>
+        </a>
+        <a class="similar-card" href="#">
+          <span class="eyebrow">Veranta Health</span>
+          <strong>Backend Engineer, Platform</strong>
+          <span class="similar-meta">Bengaluru · ₹24L–₹32L</span>
+        </a>
+        <a class="similar-card" href="#">
+          <span class="eyebrow">Ferroclad</span>
+          <strong>Senior SDE, Infra</strong>
+          <span class="similar-meta">Hybrid · ₹30L–₹40L</span>
+        </a>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- ============ RIGHT: match + apply ============ -->
+  <aside class="jd-side">
+
+    <div class="card jd-match-card">
+      <div class="jd-match-top">
+        <span class="eyebrow">Your match</span>
+        <button class="icon-btn icon-btn-tiny" id="whyScoreBtn" aria-expanded="false" title="How is this calculated?">i</button>
+      </div>
+      <div class="jd-ring-row">
+        <div id="matchRing"></div>
+        <div class="jd-ring-summary">
+          <p>Based on your resume, <strong>BackendGeneralist–CloudNative</strong> archetype.</p>
+        </div>
+      </div>
+
+      <div class="jd-why" id="whyScorePanel" hidden>
+        <p class="jd-why-text">
+          Your overall score weights each section the way this employer ranked it: skills and
+          experience carry the most weight for this role, education and certifications less so.
+        </p>
+        <div class="jd-why-row"><span>Skills</span><span class="mono">weight ×0.40</span></div>
+        <div class="jd-why-row"><span>Experience</span><span class="mono">weight ×0.35</span></div>
+        <div class="jd-why-row"><span>Education</span><span class="mono">weight ×0.15</span></div>
+        <div class="jd-why-row"><span>Certifications</span><span class="mono">weight ×0.10</span></div>
+      </div>
+
+      <button class="btn btn-teal jd-apply-btn" id="applyBtn">Apply now</button>
+      <button class="btn btn-ghost jd-save-btn" id="saveJobBtn">☆ Save for later</button>
+    </div>
+
+    <div class="card jd-gap-card">
+      <span class="eyebrow">Close the gap</span>
+      <h4>2 recommendations to raise your score</h4>
+      <ul class="jd-gap-list">
+        <li>
+          <span class="gap-icon coral">!</span>
+          <div>
+            <strong>Add a Kafka or event-streaming project</strong>
+            <p>This role weights "event-driven systems" highly — it's the single largest gap between your resume and this posting.</p>
+          </div>
+        </li>
+        <li>
+          <span class="gap-icon amber">↑</span>
+          <div>
+            <strong>Quantify your on-call ownership</strong>
+            <p>You list "production support" but not scope. Add request volume or incident metrics to strengthen the experience score.</p>
+          </div>
+        </li>
+      </ul>
+      <a class="jd-gap-link" href="#">Open full resume review →</a>
+    </div>
+
+  </aside>
+</main>
+
+<!-- ============ APPLY MODAL ============ -->
+<div class="modal-overlay" id="applyOverlay" hidden>
+  <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="applyTitle">
+    <button class="modal-close" id="applyClose" aria-label="Close">✕</button>
+    <span class="eyebrow">Arborlight Systems</span>
+    <h3 id="applyTitle">Apply to Senior Backend Engineer</h3>
+    <p class="modal-sub">Your structured resume profile is sent — no re-typing required.</p>
+    <div class="apply-resume-row">
+      <span class="badge badge-teal">resume.pdf · analyzed</span>
+      <span class="mono apply-match">87% match</span>
+    </div>
+    <label class="apply-field">
+      <span>Note to hiring team (optional)</span>
+      <textarea rows="3" placeholder="Anything you'd like to add to your application…"></textarea>
+    </label>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="applyCancel">Cancel</button>
+      <button class="btn btn-teal" id="applySubmit">Submit application</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="../shared/match-ring.js"></script>
+<script src="job-detail.js"></script>
+</body>
+</html>

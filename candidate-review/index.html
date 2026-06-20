@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Candidate Review · Senior Backend Engineer — Lattice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<link rel="stylesheet" href="candidate-review.css">
+</head>
+<body>
+
+<header class="lattice-nav">
+  <div class="brand"><span class="mark"></span> Lattice <span class="badge badge-ink nav-mode">Employer</span></div>
+  <nav>
+    <a href="#">Dashboard</a>
+    <a href="#" class="active">Job postings</a>
+    <a href="#">Candidates</a>
+    <a href="#">Hiring insights</a>
+  </nav>
+  <div class="nav-right">
+    <div class="avatar">RS</div>
+  </div>
+</header>
+
+<div class="cr-context">
+  <div class="cr-context-left">
+    <span class="eyebrow">Reviewing candidates for</span>
+    <h1>Senior Backend Engineer</h1>
+    <span class="cr-context-sub">Platform Team · Pune, IN (Hybrid) · 24 candidates ranked by match</span>
+  </div>
+  <div class="cr-context-actions">
+    <button class="btn btn-ghost btn-sm">Edit job posting</button>
+    <button class="btn btn-primary btn-sm">View matching weights</button>
+  </div>
+</div>
+
+<div class="cr-pipeline" id="pipelineBar">
+  <button class="pipe-chip active" data-status="all"><span class="pipe-count">24</span>All</button>
+  <button class="pipe-chip" data-status="new"><span class="pipe-count">14</span>New</button>
+  <button class="pipe-chip" data-status="shortlisted"><span class="pipe-count">5</span>Shortlisted</button>
+  <button class="pipe-chip" data-status="interview"><span class="pipe-count">2</span>Interviewing</button>
+  <button class="pipe-chip" data-status="hired"><span class="pipe-count">1</span>Hired</button>
+  <button class="pipe-chip" data-status="rejected"><span class="pipe-count">2</span>Rejected</button>
+</div>
+
+<main class="cr-shell">
+
+  <!-- ============ FILTERS ============ -->
+  <aside class="cr-filters card">
+    <div class="filter-group">
+      <span class="eyebrow">Sort by</span>
+      <select id="sortSelect" class="cr-select">
+        <option value="score">Match score, high → low</option>
+        <option value="recent">Most recently applied</option>
+        <option value="experience">Years of experience</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <span class="eyebrow">Minimum match score</span>
+      <input type="range" min="0" max="100" value="0" id="scoreSlider" class="cr-range">
+      <div class="cr-range-val"><span id="scoreSliderVal">0</span>% and above</div>
+    </div>
+
+    <div class="filter-group">
+      <span class="eyebrow">Search skills or name</span>
+      <input type="text" id="searchInput" class="cr-input" placeholder="e.g. Kafka, Priya…">
+    </div>
+
+    <div class="filter-group">
+      <span class="eyebrow">Archetype</span>
+      <div class="filter-checks" id="archetypeFilters">
+        <label><input type="checkbox" value="Backend Generalist — Cloud-Native" checked> Backend Generalist — Cloud-Native</label>
+        <label><input type="checkbox" value="Platform & Infra Specialist" checked> Platform & Infra Specialist</label>
+        <label><input type="checkbox" value="Full-stack, backend-leaning" checked> Full-stack, backend-leaning</label>
+      </div>
+    </div>
+
+    <button class="btn btn-ghost btn-sm" id="resetFilters" style="width:100%;">Reset filters</button>
+  </aside>
+
+  <!-- ============ CANDIDATE LIST ============ -->
+  <section class="cr-list" id="candidateList"></section>
+
+</main>
+
+<!-- ============ CANDIDATE DRAWER ============ -->
+<div class="drawer-overlay" id="drawerOverlay" hidden>
+  <div class="drawer card" role="dialog" aria-modal="true" aria-labelledby="drawerName">
+    <button class="modal-close" id="drawerClose" aria-label="Close">✕</button>
+
+    <div class="drawer-head">
+      <div class="drawer-avatar" id="drawerAvatar"></div>
+      <div>
+        <h3 id="drawerName">—</h3>
+        <span class="eyebrow" id="drawerArchetype">—</span>
+      </div>
+      <div id="drawerRing" class="drawer-ring"></div>
+    </div>
+
+    <nav class="drawer-tabs">
+      <button class="drawer-tab active" data-dtab="profile">Profile</button>
+      <button class="drawer-tab" data-dtab="skills">Skill match</button>
+      <button class="drawer-tab" data-dtab="delta">What's different</button>
+    </nav>
+
+    <div class="drawer-panel" data-dpanel="profile">
+      <section class="drawer-block">
+        <span class="eyebrow">AI summary</span>
+        <p id="drawerSummary" class="drawer-summary"></p>
+      </section>
+      <section class="drawer-block">
+        <span class="eyebrow">Work experience</span>
+        <ul class="drawer-history" id="drawerHistory"></ul>
+      </section>
+      <section class="drawer-block">
+        <span class="eyebrow">Education & certifications</span>
+        <ul class="drawer-history" id="drawerEducation"></ul>
+      </section>
+    </div>
+
+    <div class="drawer-panel" data-dpanel="skills" hidden>
+      <section class="drawer-block">
+        <span class="eyebrow">Required for this role</span>
+        <div class="chip-row" id="drawerSkillRow"></div>
+      </section>
+      <section class="drawer-block">
+        <span class="eyebrow">Score breakdown</span>
+        <div id="drawerLegend" class="drawer-legend"></div>
+      </section>
+    </div>
+
+    <div class="drawer-panel" data-dpanel="delta" hidden>
+      <section class="drawer-block">
+        <span class="eyebrow">vs. typical archetype peers</span>
+        <p class="drawer-delta-intro">Stored as a delta against the closest resume archetype — these are the parts of this resume that diverge from that baseline.</p>
+        <ul class="delta-list" id="drawerDelta"></ul>
+      </section>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn btn-ghost btn-sm" id="drawerReject">Reject</button>
+      <button class="btn btn-ghost btn-sm" id="drawerShortlist">Shortlist</button>
+      <button class="btn btn-primary btn-sm" id="drawerInterview">Move to interview</button>
+      <button class="btn btn-teal btn-sm" id="drawerHire">Hire candidate</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FEEDBACK MODAL (on hire) ============ -->
+<div class="modal-overlay" id="feedbackOverlay" hidden>
+  <div class="modal card feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
+    <button class="modal-close" id="feedbackClose" aria-label="Close">✕</button>
+    <span class="eyebrow">Feedback improves future matching</span>
+    <h3 id="feedbackTitle">Why was <span id="feedbackName">this candidate</span> selected?</h3>
+    <p class="modal-sub">Your answer trains the matching model for future Senior Backend Engineer searches.</p>
+
+    <label class="apply-field">
+      <span>What stood out about this hire?</span>
+      <textarea rows="3" placeholder="e.g. Strong ownership of a similar migration at their last role…"></textarea>
+    </label>
+
+    <div class="apply-field">
+      <span>Which skills mattered most in the decision?</span>
+      <div class="chip-row" id="feedbackSkillChips"></div>
+    </div>
+
+    <label class="apply-field">
+      <span>What differentiated them from other candidates?</span>
+      <textarea rows="3" placeholder="e.g. Only candidate with hands-on Kafka migration experience…"></textarea>
+    </label>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="feedbackSkip">Skip for now</button>
+      <button class="btn btn-teal" id="feedbackSubmit">Submit feedback</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="../shared/match-ring.js"></script>
+<script src="candidate-review.js"></script>
+</body>
+</html>
