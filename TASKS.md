@@ -195,9 +195,9 @@ This file contains the active list of tasks and features for our project. If you
 
 #### 6.1 Create employer dashboard
 * **Description**: Build frontend page for employers to view active jobs, edit listings, and see applicant counts.
-* **Role 1 (Feature Adder)**: *[Enter name/handle]*
+* **Role 1 (Feature Adder)**: *spdly-studios*
 * **Role 2 (Bug Fixer / Verifier)**: *[Enter name/handle]*
-* **Status**: `[Open]`
+* **Status**: `[Claimed - Role 1]`
 
 #### 6.2 Develop job creation interface
 * **Description**: Implement form fields for job title, description, department, required/optional skills, experience level, salary range, and location.
