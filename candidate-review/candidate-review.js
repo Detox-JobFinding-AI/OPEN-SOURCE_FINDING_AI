@@ -197,6 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const key = chip.dataset.status;
       chip.querySelector(".pipe-count").textContent = counts[key];
     });
+    const subText = document.querySelector(".cr-context-sub");
+    if (subText) {
+      subText.textContent = `Platform Team · Pune, IN (Hybrid) · ${CANDIDATES.length} candidates ranked by match`;
+    }
   }
 
   /* ---------- list rendering ---------- */
@@ -213,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return true;
     });
     if (sortMode === "score") list.sort((a, b) => overallScore(b) - overallScore(a));
+    if (sortMode === "score_asc") list.sort((a, b) => overallScore(a) - overallScore(b));
     if (sortMode === "recent") list.sort((a, b) => a.appliedDaysAgo - b.appliedDaysAgo);
     if (sortMode === "experience") list.sort((a, b) => b.experience - a.experience);
     return list;

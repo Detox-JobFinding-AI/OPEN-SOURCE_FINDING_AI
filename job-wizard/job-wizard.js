@@ -76,7 +76,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.getElementById("stepper").addEventListener("click", e => {
     const dot = e.target.closest(".wiz-step-dot");
-    if (dot) goToStep(Number(dot.dataset.step));
+    if (dot) {
+      const targetStep = Number(dot.dataset.step);
+      if (targetStep > currentStep) {
+        for (let s = 1; s < targetStep; s++) {
+          if (!validateStep(s)) {
+            goToStep(s);
+            return;
+          }
+        }
+      }
+      goToStep(targetStep);
+    }
   });
 
   /* ============ LIVE PREVIEW (basics) ============ */

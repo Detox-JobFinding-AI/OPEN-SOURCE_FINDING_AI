@@ -54,8 +54,8 @@
   border:1px solid var(--line); border-radius:var(--radius-s); color:var(--ink); background:var(--surface);
 }
 .wiz-field input:focus, .wiz-field select:focus{ outline:2px solid var(--teal); outline-offset:1px; }
-.field-error{ outline:2px solid var(--coral) !important; outline-offset:1px; }
-.chip-input.field-error{ outline:2px solid var(--coral); outline-offset:1px; }
+.field-error{ border-color:var(--coral) !important; outline:2px solid var(--coral) !important; outline-offset:1px; }
+.chip-input.field-error{ border-color:var(--coral) !important; outline:2px solid var(--coral); outline-offset:1px; }
 
 .wiz-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 

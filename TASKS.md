@@ -475,9 +475,9 @@ This file contains the active list of tasks and features for our project. If you
 
 #### 13.5 Job management pages
 * **Description**: Create job detail pages, candidate review workflows, and employer job creation wizard.
-* **Role 1 (Feature Adder)**: *[Enter name/handle]*
-* **Role 2 (Bug Fixer / Verifier)**: *[Enter name/handle]*
-* **Status**: `[Open]`
+* **Role 1 (Feature Adder)**: Riddhi
+* **Role 2 (Bug Fixer / Verifier)**: Anshulpj12
+* **Status**: `[Verified / Closed]`
 
 #### 13.6 Analytics visualizations
 * **Description**: Integrate charting libraries (e.g. Chart.js, Recharts) to render dashboards for candidate and employer analytics.
