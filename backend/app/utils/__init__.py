@@ -4,3 +4,11 @@ from .resume_parser import (
     extract_text_from_docx,
     extract_text_from_txt,
 )
+from .resume_uploader import (
+    validate_resume,
+    ValidationError,
+    FileSizeLimitError,
+    InvalidExtensionError,
+    InvalidSignatureError,
+)
+
