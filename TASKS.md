@@ -53,9 +53,9 @@ This file contains the active list of tasks and features for our project. If you
 
 #### 2.1 Support PDF, DOCX, and TXT resume uploads
 * **Description**: Build secure file upload handlers checking file formats, MIME types, and file size limits.
-* **Role 1 (Feature Adder)**: *[Enter name/handle]*
+* **Role 1 (Feature Adder)**: *[ekansh116]*
 * **Role 2 (Bug Fixer / Verifier)**: *[Enter name/handle]*
-* **Status**: `[Open]`
+* **Status**: `[Claimed]`
 
 #### 2.2 Extract text from uploaded resumes
 * **Description**: Integrate text extraction libraries (like pdfplumber/PyPDF2, python-docx) to parse raw text from PDF, DOCX, and TXT files.
