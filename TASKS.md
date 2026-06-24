@@ -65,9 +65,9 @@ This file contains the active list of tasks and features for our project. If you
 
 #### 2.3 Clean and normalize resume content
 * **Description**: Build text cleaning utilities to remove garbage characters, normalize whitespaces, and prepare text for LLM parsing.
-* **Role 1 (Feature Adder)**: *[Enter name/handle]*
+* **Role 1 (Feature Adder)**: *[ekansh116]*
 * **Role 2 (Bug Fixer / Verifier)**: *[Enter name/handle]*
-* **Status**: `[Open]`
+* **Status**: `[Claimed]`
 
 #### 2.4 Store original resume files securely
 * **Description**: Configure secure storage (Local/S3/MinIO) for uploading and retrieving original resume files, implementing encryption-at-rest.
