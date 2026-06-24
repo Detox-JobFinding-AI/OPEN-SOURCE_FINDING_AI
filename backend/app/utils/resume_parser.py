@@ -4,6 +4,7 @@ import os
 from typing import Generator, Union, BinaryIO
 import pdfplumber
 import docx
+from .text_cleaner import clean_resume_text
 
 @contextlib.contextmanager
 def _open_file_input(file_input: Union[str, bytes, BinaryIO]) -> Generator[BinaryIO, None, None]:
@@ -134,10 +135,11 @@ def extract_text_from_txt(file_input: Union[str, bytes, BinaryIO]) -> str:
             raise e
         raise ValueError(f"Failed to extract text from TXT: {str(e)}") from e
 
-def extract_text(file_input: Union[str, bytes, BinaryIO], filename: str) -> str:
+def extract_text(file_input: Union[str, bytes, BinaryIO], filename: str, clean: bool = True) -> str:
     """
     Unified extraction routing function. Identifies format from the filename
     extension and delegates to the appropriate extractor.
+    Optionally cleans and normalizes the extracted text if clean is True.
     
     Supported formats: .pdf, .docx, .txt
     """
@@ -148,12 +150,16 @@ def extract_text(file_input: Union[str, bytes, BinaryIO], filename: str) -> str:
     
     ext = os.path.splitext(clean_filename.lower())[1]
     if ext == '.pdf':
-        return extract_text_from_pdf(file_input)
+        text = extract_text_from_pdf(file_input)
     elif ext == '.docx':
-        return extract_text_from_docx(file_input)
+        text = extract_text_from_docx(file_input)
     elif ext == '.txt':
-        return extract_text_from_txt(file_input)
+        text = extract_text_from_txt(file_input)
     elif ext == '.doc':
         raise ValueError("Unsupported format: Legacy Word '.doc' files are not supported. Please convert to '.docx' or '.pdf'.")
     else:
         raise ValueError(f"Unsupported file extension '{ext}'. Only .pdf, .docx, and .txt files are supported.")
+        
+    if clean:
+        return clean_resume_text(text)
+    return text

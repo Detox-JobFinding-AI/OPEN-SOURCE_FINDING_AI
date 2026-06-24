@@ -11,4 +11,8 @@ from .resume_uploader import (
     InvalidExtensionError,
     InvalidSignatureError,
 )
+from .text_cleaner import (
+    clean_resume_text,
+)
+
 
