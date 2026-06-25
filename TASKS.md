@@ -201,7 +201,7 @@ This file contains the active list of tasks and features for our project. If you
 
 #### 6.2 Develop job creation interface
 * **Description**: Implement form fields for job title, description, department, required/optional skills, experience level, salary range, and location.
-* **Role 1 (Feature Adder)**: *[Enter name/handle]*
+* **Role 1 (Feature Adder)**: *[yaswithareddy333]*
 * **Role 2 (Bug Fixer / Verifier)**: *[Enter name/handle]*
 * **Status**: `[Open]`
 
