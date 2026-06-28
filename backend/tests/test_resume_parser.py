@@ -248,3 +248,26 @@ def test_extract_text_stream_cursor_reset(monkeypatch):
     res = extract_text(stream, "resume.pdf")
     assert res == pages[0]._text
     assert stream.tell() == 0  # Verify cursor was reset back to 0
+
+def test_extract_text_default_cleaning_behavior(monkeypatch):
+    pages = [
+        MockPage("PDF Extracted   Text:   This is some   dummy text to exceed the fifty character threshold required by the parser.\n•   Some bullet point.")
+    ]
+    monkeypatch.setattr(pdfplumber, "open", lambda f: MockPDF(pages))
+    
+    res = extract_text(b"pdf data", "resume.pdf")
+    # Spaces collapsed, bullet normalized
+    assert "PDF Extracted Text: This is some dummy text" in res
+    assert "- Some bullet point." in res
+
+def test_extract_text_clean_false_bypasses_cleaning(monkeypatch):
+    pages = [
+        MockPage("PDF Extracted   Text:   This is some   dummy text to exceed the fifty character threshold required by the parser.\n•   Some bullet point.")
+    ]
+    monkeypatch.setattr(pdfplumber, "open", lambda f: MockPDF(pages))
+    
+    res = extract_text(b"pdf data", "resume.pdf", clean=False)
+    # Verify raw text is returned, including double spaces and uncleaned bullet symbol
+    assert "PDF Extracted   Text:   This is some   dummy text" in res
+    assert "•   Some bullet point." in res
+
