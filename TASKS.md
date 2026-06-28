@@ -71,9 +71,9 @@ This file contains the active list of tasks and features for our project. If you
 
 #### 2.4 Store original resume files securely
 * **Description**: Configure secure storage (Local/S3/MinIO) for uploading and retrieving original resume files, implementing encryption-at-rest.
-* **Role 1 (Feature Adder)**: *[Enter name/handle]*
+* **Role 1 (Feature Adder)**: *[Ekansh116]*
 * **Role 2 (Bug Fixer / Verifier)**: *[Enter name/handle]*
-* **Status**: `[Open]`
+* **Status**: `[Claimed]`
 
 #### 2.5 Create resume metadata management system
 * **Description**: Set up database schemas to track uploaded files, file paths, upload timestamps, file sizes, and processing statuses.
